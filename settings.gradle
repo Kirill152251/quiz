@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "Quiz"
 include ':app'
 include ':domain'
-include ':data'
+include ':quiz-configuration'
+include ':core'
