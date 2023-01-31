@@ -1,4 +1,4 @@
-package com.models
+package com.domain.models
 
 enum class Difficulty {
 

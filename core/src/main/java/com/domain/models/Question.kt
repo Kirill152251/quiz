@@ -1,4 +1,4 @@
-package com.models
+package com.domain.models
 
 data class Question(
     val id: String,

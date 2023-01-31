@@ -1,4 +1,4 @@
-package com.models
+package com.domain.models
 
 data class Quiz(
     val id: String,
