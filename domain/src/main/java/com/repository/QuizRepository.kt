@@ -9,7 +9,6 @@ interface QuizRepository {
 
     suspend fun getAllLikedQuizzes(): List<Quiz>
     suspend fun saveLikedQuiz(quiz: Quiz)
-    suspend fun clearLikesQuizzes()
     suspend fun deleteLikedQuizzes(quiz: Quiz)
 
     suspend fun fetchQuiz(
