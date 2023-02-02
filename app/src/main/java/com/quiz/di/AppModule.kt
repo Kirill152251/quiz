@@ -1,7 +1,13 @@
 package com.quiz.di
 
-import com.di.NetworkModule
+import com.data.remote.QuizService
 import dagger.Module
+import dagger.Provides
 
-@Module(includes = [NetworkModule::class])
-object AppModule
+@Module
+object AppModule {
+
+    @AppScope
+    @Provides
+    fun provideQuizService() = QuizService()
+}
