@@ -1,0 +1,22 @@
+<resources>
+    <style name="Widget.Quiz.RadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:textStyle">normal</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:letterSpacing">-0.02</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/radio_text_color</item>
+        <item name="android:background">@drawable/radio_flat_selector</item>
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:gravity">center</item>
+    </style>
+    <style name="NumberOfQuestions" parent="Widget.Quiz.RadioButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.25</item>
+    </style>
+
+    <style name="Difficulty" parent="Widget.Quiz.RadioButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.33</item>
+    </style>
+</resources>
