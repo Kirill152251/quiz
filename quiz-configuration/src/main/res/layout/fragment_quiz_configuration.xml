@@ -117,7 +117,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_difficulty" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_arts"
         android:layout_width="wrap_content"
         android:checked="true"
@@ -129,7 +129,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_chose_categories" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_films"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
         app:layout_constraintStart_toEndOf="@+id/rb_arts"
         app:layout_constraintTop_toTopOf="@+id/rb_arts" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_arts"
         app:layout_constraintTop_toBottomOf="@+id/rb_arts" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_films"
         app:layout_constraintTop_toBottomOf="@+id/rb_films" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_geography"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_food"
         app:layout_constraintTop_toBottomOf="@+id/rb_food" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_general"
         app:layout_constraintTop_toBottomOf="@+id/rb_general" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_geography"
         app:layout_constraintTop_toBottomOf="@+id/rb_geography" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -187,7 +187,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_history"
         app:layout_constraintTop_toBottomOf="@+id/rb_history" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_society"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -195,7 +195,7 @@
         app:layout_constraintStart_toStartOf="@+id/rb_music"
         app:layout_constraintTop_toBottomOf="@+id/rb_music" />
 
-    <com.google.android.material.radiobutton.MaterialRadioButton
+    <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/rb_sport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
