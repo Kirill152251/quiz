@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.presentation.QuizConfiguration">
+    tools:context="com.presentation.QuizConfigurationScreen">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_setup"

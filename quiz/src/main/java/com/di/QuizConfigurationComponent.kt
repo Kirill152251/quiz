@@ -2,7 +2,7 @@ package com.di
 
 import androidx.lifecycle.ViewModel
 import com.data.remote.QuizService
-import com.presentation.QuizConfiguration
+import com.presentation.QuizConfigurationScreen
 import dagger.Component
 import javax.inject.Scope
 import kotlin.properties.Delegates.notNull
@@ -11,7 +11,7 @@ import kotlin.properties.Delegates.notNull
 @ConfigurationScreenScope
 internal interface QuizConfigurationComponent {
 
-    fun inject(fragment: QuizConfiguration)
+    fun inject(fragment: QuizConfigurationScreen)
 
     @Component.Builder
     interface Builder {

@@ -6,20 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
-import com.di.ConfigurationScreenComponentViewModel
-import com.quiz_configuration.R
-import com.quiz_configuration.databinding.FragmentQuizConfigurationBinding
+import com.quiz_configuration.databinding.FragmentQuestionScreenBinding
 
-class QuizConfiguration : Fragment(R.layout.fragment_quiz_configuration) {
+class QuestionScreen : Fragment() {
 
-    private var _binding: FragmentQuizConfigurationBinding? = null
+    private var _binding: FragmentQuestionScreenBinding? = null
     private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
-        ViewModelProvider(this).get<ConfigurationScreenComponentViewModel>()
-            .configurationComponent.inject(this)
         super.onAttach(context)
     }
 
@@ -27,7 +21,7 @@ class QuizConfiguration : Fragment(R.layout.fragment_quiz_configuration) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentQuizConfigurationBinding.inflate(inflater, container, false)
+        _binding = FragmentQuestionScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
 
