@@ -7,7 +7,34 @@
 
     <fragment
         android:id="@+id/quizConfiguration"
-        android:name="com.presentation.QuizConfigurationScreen"
+        android:name="com.quiz.presentation.QuizConfigurationScreen"
         android:label="fragment_quiz_configuration"
-        tools:layout="@layout/fragment_quiz_configuration" />
+        tools:layout="@layout/fragment_quiz_configuration" >
+        <action
+            android:id="@+id/action_quizConfiguration_to_questionScreen"
+            app:destination="@id/questionScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionScreen"
+        android:name="com.quiz.presentation.QuestionScreen"
+        android:label="fragment_question_screen"
+        tools:layout="@layout/fragment_question_screen" >
+        <action
+            android:id="@+id/action_questionScreen_to_resultScreen"
+            app:destination="@id/resultScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultScreen"
+        android:name="com.quiz.presentation.ResultScreen"
+        android:label="fragment_result_screen"
+        tools:layout="@layout/fragment_result_screen" />
+    <fragment
+        android:id="@+id/favoriteQuizzesScreen"
+        android:name="com.quiz.presentation.FavoriteQuizzesScreen"
+        android:label="fragment_favorite_quizzes_screen"
+        tools:layout="@layout/fragment_favorite_quizzes_screen" >
+        <action
+            android:id="@+id/action_favoriteQuizzesScreen_to_questionScreen"
+            app:destination="@id/questionScreen" />
+    </fragment>
 </navigation>

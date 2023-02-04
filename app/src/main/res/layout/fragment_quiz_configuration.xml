@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_setup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/set_up_quiz"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_select_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="16dp"
+        android:text="@string/chose_number"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/radio_group_number"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_setup" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_select_number">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_five"
+            style="@style/NumberOfQuestions"
+            android:checked="true"
+            android:text="@string/five" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_ten"
+            style="@style/NumberOfQuestions"
+            android:text="@string/ten" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_fifty"
+            style="@style/NumberOfQuestions"
+            android:text="@string/fifteen" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_twenty"
+            style="@style/NumberOfQuestions"
+            android:text="@string/twenty" />
+    </RadioGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_chose_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="18dp"
+        android:text="@string/chose_difficulty"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_number" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_difficulty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_chose_difficulty">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_easy"
+            style="@style/Difficulty"
+            android:checked="true"
+            android:text="@string/easy" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_medium"
+            style="@style/Difficulty"
+            android:text="@string/medium" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/radio_button_hard"
+            style="@style/Difficulty"
+            android:text="@string/hard" />
+    </RadioGroup>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_chose_categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="24dp"
+        android:text="@string/select_categories"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_difficulty" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_arts"
+        android:layout_width="wrap_content"
+        android:checked="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/arts"
+        app:layout_constraintEnd_toStartOf="@+id/rb_films"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_chose_categories" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_films"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/films"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rb_arts"
+        app:layout_constraintTop_toTopOf="@+id/rb_arts" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food"
+        app:layout_constraintStart_toStartOf="@+id/rb_arts"
+        app:layout_constraintTop_toBottomOf="@+id/rb_arts" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_general"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/general"
+        app:layout_constraintStart_toStartOf="@+id/rb_films"
+        app:layout_constraintTop_toBottomOf="@+id/rb_films" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_geography"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/geography"
+        app:layout_constraintStart_toStartOf="@+id/rb_food"
+        app:layout_constraintTop_toBottomOf="@+id/rb_food" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/history"
+        app:layout_constraintStart_toStartOf="@+id/rb_general"
+        app:layout_constraintTop_toBottomOf="@+id/rb_general" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/music"
+        app:layout_constraintStart_toStartOf="@+id/rb_geography"
+        app:layout_constraintTop_toBottomOf="@+id/rb_geography" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_science"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/science"
+        app:layout_constraintStart_toStartOf="@+id/rb_history"
+        app:layout_constraintTop_toBottomOf="@+id/rb_history" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_society"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/society"
+        app:layout_constraintStart_toStartOf="@+id/rb_music"
+        app:layout_constraintTop_toBottomOf="@+id/rb_music" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rb_sport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sport"
+        app:layout_constraintStart_toStartOf="@+id/rb_science"
+        app:layout_constraintTop_toBottomOf="@+id/rb_science" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_start_quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_quiz"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rb_society" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
