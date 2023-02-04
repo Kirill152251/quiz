@@ -16,3 +16,4 @@ rootProject.name = "Quiz"
 include ':app'
 include ':quiz'
 include ':core'
+include ':favorites'
