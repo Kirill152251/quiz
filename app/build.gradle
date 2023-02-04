@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation project(":quiz-configuration")
+    implementation project(':quiz')
     implementation project(":core")
 
     implementation 'androidx.core:core-ktx:1.7.0'
