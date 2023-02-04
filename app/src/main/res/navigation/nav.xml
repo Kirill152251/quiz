@@ -3,38 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav"
-    app:startDestination="@id/quizConfiguration">
+    app:startDestination="@id/quiz_nav">
 
-    <fragment
-        android:id="@+id/quizConfiguration"
-        android:name="com.quiz.presentation.QuizConfigurationScreen"
-        android:label="fragment_quiz_configuration"
-        tools:layout="@layout/fragment_quiz_configuration" >
-        <action
-            android:id="@+id/action_quizConfiguration_to_questionScreen"
-            app:destination="@id/questionScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/questionScreen"
-        android:name="com.quiz.presentation.QuestionScreen"
-        android:label="fragment_question_screen"
-        tools:layout="@layout/fragment_question_screen" >
-        <action
-            android:id="@+id/action_questionScreen_to_resultScreen"
-            app:destination="@id/resultScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/resultScreen"
-        android:name="com.quiz.presentation.ResultScreen"
-        android:label="fragment_result_screen"
-        tools:layout="@layout/fragment_result_screen" />
+
     <fragment
         android:id="@+id/favoriteQuizzesScreen"
         android:name="com.quiz.presentation.FavoriteQuizzesScreen"
-        android:label="fragment_favorite_quizzes_screen"
-        tools:layout="@layout/fragment_favorite_quizzes_screen" >
+        android:label="FavoriteQuizzesScreen" >
         <action
-            android:id="@+id/action_favoriteQuizzesScreen_to_questionScreen"
-            app:destination="@id/questionScreen" />
+            android:id="@+id/action_favoriteQuizzesScreen_to_navigation"
+            app:destination="@id/quiz_nav" />
     </fragment>
+    <navigation android:id="@+id/quiz_nav"
+        app:startDestination="@id/quizConfiguration">
+        <fragment
+            android:id="@+id/quizConfiguration"
+            android:name="com.quiz.presentation.QuizConfigurationScreen"
+            android:label="fragment_quiz_configuration"
+            tools:layout="@layout/fragment_quiz_configuration">
+            <action
+                android:id="@+id/action_quizConfiguration_to_questionScreen"
+                app:destination="@id/questionScreen" />
+        </fragment>
+        <fragment
+            android:id="@+id/questionScreen"
+            android:name="com.quiz.presentation.QuestionScreen"
+            android:label="fragment_question_screen"
+            tools:layout="@layout/fragment_question_screen">
+            <action
+                android:id="@+id/action_questionScreen_to_resultScreen"
+                app:destination="@id/resultScreen" />
+        </fragment>
+        <fragment
+            android:id="@+id/resultScreen"
+            android:name="com.quiz.presentation.ResultScreen"
+            android:label="fragment_result_screen"
+            tools:layout="@layout/fragment_result_screen" />
+    </navigation>
+
 </navigation>

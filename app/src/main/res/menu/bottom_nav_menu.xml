@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/quiz_nav"
+        android:title="@string/app_name"
+        android:icon="@drawable/ic_quiz"/>
+    <item
+        android:id="@+id/favoriteQuizzesScreen"
+        android:title="@string/favorite"
+        android:icon="@drawable/ic_favorite"/>
+</menu>
