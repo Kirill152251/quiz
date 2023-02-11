@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.quiz.appComponent
 import com.quiz.databinding.FragmentQuestionScreenBinding
 
 class QuestionScreen : Fragment() {
@@ -14,6 +15,7 @@ class QuestionScreen : Fragment() {
     private val binding get() = _binding!!
 
     override fun onAttach(context: Context) {
+        context.appComponent.inject(this)
         super.onAttach(context)
     }
 

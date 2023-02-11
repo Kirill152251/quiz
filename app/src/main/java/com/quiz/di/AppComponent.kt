@@ -1,13 +1,14 @@
 package com.quiz.di
 
 import android.content.Context
+import com.quiz.presentation.QuestionScreen
 import com.quiz.presentation.QuizConfigurationScreen
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component
+@Component(modules = [AppModule::class])
 interface AppComponent {
 
     @Component.Factory
@@ -16,4 +17,5 @@ interface AppComponent {
     }
 
     fun inject(fragment: QuizConfigurationScreen)
+    fun inject(fragment: QuestionScreen)
 }

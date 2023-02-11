@@ -54,7 +54,7 @@
             android:text="@string/ten" />
 
         <com.google.android.material.radiobutton.MaterialRadioButton
-            android:id="@+id/radio_button_fifty"
+            android:id="@+id/radio_button_fifteen"
             style="@style/NumberOfQuestions"
             android:text="@string/fifteen" />
 
@@ -117,90 +117,90 @@
         app:layout_constraintTop_toBottomOf="@+id/radio_group_difficulty" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_arts"
+        android:id="@+id/checkbox_arts"
         android:layout_width="wrap_content"
-        android:checked="true"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:checked="true"
         android:text="@string/arts"
-        app:layout_constraintEnd_toStartOf="@+id/rb_films"
+        app:layout_constraintEnd_toStartOf="@+id/checkbox_films"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_chose_categories" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_films"
+        android:id="@+id/checkbox_films"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/films"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/rb_arts"
-        app:layout_constraintTop_toTopOf="@+id/rb_arts" />
+        app:layout_constraintStart_toEndOf="@+id/checkbox_arts"
+        app:layout_constraintTop_toTopOf="@+id/checkbox_arts" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_food"
+        android:id="@+id/checkbox_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/food"
-        app:layout_constraintStart_toStartOf="@+id/rb_arts"
-        app:layout_constraintTop_toBottomOf="@+id/rb_arts" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_arts"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_arts" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_general"
+        android:id="@+id/checkbox_general"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/general"
-        app:layout_constraintStart_toStartOf="@+id/rb_films"
-        app:layout_constraintTop_toBottomOf="@+id/rb_films" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_films"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_films" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_geography"
+        android:id="@+id/checkbox_geography"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/geography"
-        app:layout_constraintStart_toStartOf="@+id/rb_food"
-        app:layout_constraintTop_toBottomOf="@+id/rb_food" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_food"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_food" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_history"
+        android:id="@+id/checkbox_history"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/history"
-        app:layout_constraintStart_toStartOf="@+id/rb_general"
-        app:layout_constraintTop_toBottomOf="@+id/rb_general" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_general"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_general" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_music"
+        android:id="@+id/checkbox_music"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/music"
-        app:layout_constraintStart_toStartOf="@+id/rb_geography"
-        app:layout_constraintTop_toBottomOf="@+id/rb_geography" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_geography"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_geography" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_science"
+        android:id="@+id/checkbox_science"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/science"
-        app:layout_constraintStart_toStartOf="@+id/rb_history"
-        app:layout_constraintTop_toBottomOf="@+id/rb_history" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_history"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_history" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_society"
+        android:id="@+id/checkbox_society"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/society"
-        app:layout_constraintStart_toStartOf="@+id/rb_music"
-        app:layout_constraintTop_toBottomOf="@+id/rb_music" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_music"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_music" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/rb_sport"
+        android:id="@+id/checkbox_sport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sport"
-        app:layout_constraintStart_toStartOf="@+id/rb_science"
-        app:layout_constraintTop_toBottomOf="@+id/rb_science" />
+        app:layout_constraintStart_toStartOf="@+id/checkbox_science"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_science" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_start_quiz"
@@ -212,6 +212,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rb_society" />
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_society" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progress_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_quiz" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
