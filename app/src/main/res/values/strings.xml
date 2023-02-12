@@ -22,6 +22,8 @@
     <string name="science">Science</string>
     <string name="society">Society</string>
     <string name="sport">Sport</string>
+    <string name="submit">Submit</string>
     <string name="favorite">Favorite</string>
     <string name="error_message">Something went wrong.</string>
+    <string name="question">Question: %1$s / %2$s</string>
 </resources>

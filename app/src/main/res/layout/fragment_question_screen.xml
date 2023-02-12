@@ -4,15 +4,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_question_done"
+            style="@style/Widget.Quiz.TextView.Toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/question"
+            tools:text="Question: 1 / 20" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="QUESTION SCREEN"
+        android:gravity="center"
+        android:paddingHorizontal="16dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/radio_group_number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:text="What Foodstuff Is The Most Advertised In The UK?" />
+
+    <RadioGroup
+        android:id="@+id/radio_group_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_question">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/first_answer"
+            style="@style/Widget.Quiz.RadioButtonAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            tools:text="Breakfast Cereals" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/second_answer"
+            style="@style/Widget.Quiz.RadioButtonAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Bread" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/third_answer"
+            style="@style/Widget.Quiz.RadioButtonAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Crisps" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/third_question"
+            style="@style/Widget.Quiz.RadioButtonAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Chewing Gum" />
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_number" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
