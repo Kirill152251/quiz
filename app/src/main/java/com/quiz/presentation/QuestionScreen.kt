@@ -39,17 +39,22 @@ class QuestionScreen : Fragment() {
         _binding = FragmentQuestionScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setCurrentQuestion()
         bindQuestion()
         bindQuestionNumber()
         binding.btnSubmit.setOnClickListener {
-            viewModel.setNextQuestion()
+            binding.apply {
+                when (binding.radioGroupNumber.checkedRadioButtonId) {
+                    firstAnswer.id -> viewModel.setNextQuestion(firstAnswer.text.toString())
+                    secondAnswer.id -> viewModel.setNextQuestion(secondAnswer.text.toString())
+                    thirdAnswer.id -> viewModel.setNextQuestion(thirdAnswer.text.toString())
+                    else -> viewModel.setNextQuestion(forthAnswer.text.toString())
+                }
+            }
         }
     }
-
     private fun bindQuestion() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -65,7 +70,6 @@ class QuestionScreen : Fragment() {
             }
         }
     }
-
     private fun bindQuestionNumber() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

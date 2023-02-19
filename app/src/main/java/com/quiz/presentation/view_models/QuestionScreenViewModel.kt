@@ -11,12 +11,13 @@ class QuestionScreenViewModel @Inject constructor(
     val currentQuestion by lazy {
         repository.getCurrentQuestion()
     }
+
     val numberOfCurrentQuestion by lazy {
         repository.getNumberOfCurrentQuestion()
     }
 
-    fun setNextQuestion() {
-        repository.setNextQuestion()
+    fun setNextQuestion(chosenAnswer: String) {
+        repository.setNextQuestion(chosenAnswer)
     }
 
     fun setCurrentQuestion() {

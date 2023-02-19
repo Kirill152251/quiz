@@ -12,7 +12,7 @@ interface QuizRepository {
     fun setCurrentQuiz(quiz: Quiz)
     fun getCurrentQuestion(): Flow<Question>
     fun getNumberOfCurrentQuestion(): Flow<Int>
-    fun setNextQuestion()
+    fun setNextQuestion(chosenAnswer: String)
     fun setCurrentQuestion()
     fun getQuizSize(): Int
 

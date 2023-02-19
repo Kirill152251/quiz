@@ -2,10 +2,7 @@ package com.quiz.data
 
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.RemoteDataSource
-import com.quiz.domain.models.Category
-import com.quiz.domain.models.Difficulty
-import com.quiz.domain.models.Question
-import com.quiz.domain.models.Quiz
+import com.quiz.domain.models.*
 import com.quiz.utils.ApiResult
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +18,7 @@ class QuizRepositoryImpl @Inject constructor(
     private val numberOfCurrentQuestion = MutableStateFlow(1)
     private val currentQuestion =
         MutableStateFlow(Question.emptyQuestion)
+    private val answeredQuestionsList = mutableListOf<AnsweredQuestion>()
 
     override fun getCurrentQuestion(): Flow<Question> {
         return currentQuestion
@@ -30,7 +28,14 @@ class QuizRepositoryImpl @Inject constructor(
         return numberOfCurrentQuestion
     }
 
-    override fun setNextQuestion() {
+    override fun setNextQuestion(chosenAnswer: String) {
+        val answeredQuestion = AnsweredQuestion(
+            chosenAnswer = chosenAnswer,
+            correctAnswer = currentQuestion.value.correctAnswer,
+            allAnswers = currentQuestion.value.shuffledAnswers,
+            questionText = currentQuestion.value.question
+        )
+        answeredQuestionsList.add(answeredQuestion)
         numberOfCurrentQuestion.value += 1
         currentQuestion.value = currentQuiz.questions[numberOfCurrentQuestion.value - 1]
     }
