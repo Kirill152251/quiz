@@ -10,10 +10,11 @@ import kotlinx.coroutines.flow.Flow
 interface QuizRepository {
 
     fun setCurrentQuiz(quiz: Quiz)
-    fun setCurrentQuestion(question: Question)
-
-    fun getCurrentQuiz(): Quiz?
-    fun getCurrentQuestion(): Question?
+    fun getCurrentQuestion(): Flow<Question>
+    fun getNumberOfCurrentQuestion(): Flow<Int>
+    fun setNextQuestion()
+    fun setCurrentQuestion()
+    fun getQuizSize(): Int
 
     suspend fun fetchQuizFlow(
         difficulty: Difficulty,

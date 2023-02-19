@@ -11,8 +11,13 @@ data class QuestionItem(
     val question: String,
 ) {
     fun toDomain(): Question {
+        val allAnswers = mutableListOf<String>()
+        allAnswers.add(correctAnswer)
+        incorrectAnswers.forEach {
+            allAnswers.add(it)
+        }
         return Question(
-            id, correctAnswer, incorrectAnswers, question
+            id, correctAnswer, incorrectAnswers, question, allAnswers.shuffled()
         )
     }
 }

@@ -8,6 +8,7 @@ import com.quiz.domain.models.Question
 import com.quiz.domain.models.Quiz
 import com.quiz.utils.ApiResult
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -16,23 +17,34 @@ class QuizRepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) : QuizRepository {
 
-    private var currentQuiz: Quiz? = null
-    private var currentQuestion: Question? = null
+    private lateinit var currentQuiz: Quiz
+    private val numberOfCurrentQuestion = MutableStateFlow(1)
+    private val currentQuestion =
+        MutableStateFlow(Question.emptyQuestion)
+
+    override fun getCurrentQuestion(): Flow<Question> {
+        return currentQuestion
+    }
+
+    override fun getNumberOfCurrentQuestion(): Flow<Int> {
+        return numberOfCurrentQuestion
+    }
+
+    override fun setNextQuestion() {
+        numberOfCurrentQuestion.value += 1
+        currentQuestion.value = currentQuiz.questions[numberOfCurrentQuestion.value - 1]
+    }
+
+    override fun setCurrentQuestion() {
+        currentQuestion.value = currentQuiz.questions[numberOfCurrentQuestion.value - 1]
+    }
+
+    override fun getQuizSize(): Int {
+        return currentQuiz.questions.size
+    }
 
     override fun setCurrentQuiz(quiz: Quiz) {
         currentQuiz = quiz
-    }
-
-    override fun setCurrentQuestion(question: Question) {
-        currentQuestion = question
-    }
-
-    override fun getCurrentQuiz(): Quiz? {
-        return currentQuiz
-    }
-
-    override fun getCurrentQuestion(): Question? {
-        return currentQuestion
     }
 
     override suspend fun fetchQuizFlow(
