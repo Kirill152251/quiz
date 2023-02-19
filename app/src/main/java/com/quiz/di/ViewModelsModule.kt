@@ -2,6 +2,7 @@ package com.quiz.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.quiz.presentation.view_models.QuestionScreenViewModel
 import com.quiz.presentation.view_models.QuizConfigurationViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -22,7 +23,13 @@ interface ViewModelsModule {
     @IntoMap
     @ViewModelKey(QuizConfigurationViewModel::class)
     @Singleton
-    fun bindForecastViewModel(viewModel: QuizConfigurationViewModel): ViewModel
+    fun bindQuizConfigViewModel(viewModel: QuizConfigurationViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(QuestionScreenViewModel::class)
+    @Singleton
+    fun bindQuestionViewModel(viewModel: QuestionScreenViewModel): ViewModel
 }
 
 @Singleton
