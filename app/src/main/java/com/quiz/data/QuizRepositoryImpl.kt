@@ -36,6 +36,7 @@ class QuizRepositoryImpl @Inject constructor(
             questionText = currentQuestion.value.question
         )
         answeredQuestionsList.add(answeredQuestion)
+        if (numberOfCurrentQuestion.value == currentQuiz.questions.size) return
         numberOfCurrentQuestion.value += 1
         currentQuestion.value = currentQuiz.questions[numberOfCurrentQuestion.value - 1]
     }

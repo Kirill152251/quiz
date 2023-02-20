@@ -14,12 +14,35 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_question_done"
+            android:id="@+id/text_question_title"
             style="@style/Widget.Quiz.TextView.Toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/question"
-            tools:text="Question: 1 / 20" />
+            tools:text="Question:" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_number_of_current_question"
+            style="@style/Widget.Quiz.TextView.Toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="4dp"
+            tools:text="0" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_backslash"
+            style="@style/Widget.Quiz.TextView.Toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="4dp"
+            android:text="@string/backslash" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_number_of_all_questions"
+            style="@style/Widget.Quiz.TextView.Toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="20" />
 
     </androidx.appcompat.widget.Toolbar>
 

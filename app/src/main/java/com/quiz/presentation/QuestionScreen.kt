@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentQuestionScreenBinding
@@ -42,10 +43,14 @@ class QuestionScreen : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setCurrentQuestion()
+        binding.textNumberOfAllQuestions.text = viewModel.getQuizSize().toString()
         bindQuestion()
         bindQuestionNumber()
         binding.btnSubmit.setOnClickListener {
             binding.apply {
+                if (textNumberOfCurrentQuestion.text == viewModel.getQuizSize().toString()) {
+                    findNavController().navigate(R.id.action_questionScreen_to_resultScreen)
+                }
                 when (binding.radioGroupNumber.checkedRadioButtonId) {
                     firstAnswer.id -> viewModel.setNextQuestion(firstAnswer.text.toString())
                     secondAnswer.id -> viewModel.setNextQuestion(secondAnswer.text.toString())
@@ -74,11 +79,7 @@ class QuestionScreen : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.numberOfCurrentQuestion.collect { number ->
-                    binding.textQuestionDone.text = getString(
-                        R.string.question,
-                        number.toString(),
-                        viewModel.getQuizSize().toString()
-                    )
+                    binding.textNumberOfCurrentQuestion.text = number.toString()
                 }
             }
         }
