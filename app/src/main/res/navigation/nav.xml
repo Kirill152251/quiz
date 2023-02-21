@@ -38,7 +38,11 @@
             android:id="@+id/resultScreen"
             android:name="com.quiz.presentation.ResultScreen"
             android:label="fragment_result_screen"
-            tools:layout="@layout/fragment_result_screen" />
+            tools:layout="@layout/fragment_result_screen" >
+            <action
+                android:id="@+id/action_resultScreen_to_quizConfiguration"
+                app:destination="@id/quizConfiguration" />
+        </fragment>
     </navigation>
 
 </navigation>

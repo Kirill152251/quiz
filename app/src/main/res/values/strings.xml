@@ -27,4 +27,6 @@
     <string name="error_message">Something went wrong.</string>
     <string name="question">Question:</string>
     <string name="backslash">/</string>
+    <string name="out_of">out of</string>
+    <string name="start_new_quiz">Start new quiz</string>
 </resources>
