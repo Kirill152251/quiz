@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_answer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:paddingHorizontal="16dp"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="What Foodstuff Is The Most Advertised In The UK?" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_first_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/first"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_question"
+            tools:text="1. First answer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_second_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/second"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_first_answer"
+            tools:text="2. Second answer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_third_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/third"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_second_answer"
+            tools:text="3. Third answer" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_forth_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:paddingHorizontal="16dp"
+            android:text="@string/forth"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_third_answer"
+            tools:text="4. Forth answer" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_indicator1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text_first_answer"
+            app:layout_constraintStart_toEndOf="@+id/text_first_answer"
+            app:layout_constraintTop_toTopOf="@+id/text_first_answer"
+            tools:src="@drawable/ic_wrong" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_indicator2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text_second_answer"
+            app:layout_constraintStart_toEndOf="@+id/text_second_answer"
+            app:layout_constraintTop_toTopOf="@+id/text_second_answer"
+            tools:src="@drawable/ic_correct" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_indicator3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text_third_answer"
+            app:layout_constraintStart_toEndOf="@+id/text_third_answer"
+            app:layout_constraintTop_toTopOf="@+id/text_third_answer" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_indicator4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/text_forth_answer"
+            app:layout_constraintStart_toEndOf="@+id/text_forth_answer"
+            app:layout_constraintTop_toTopOf="@+id/text_forth_answer" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
