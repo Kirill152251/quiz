@@ -1,30 +1,26 @@
 package com.quiz.presentation
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.quiz.R
 import com.quiz.databinding.AnswerItemBinding
 import com.quiz.domain.models.AnsweredQuestion
 
-class AnswersAdapter(
-    @ColorInt private val correctColor: Int,
-    @ColorInt private val inCorrectColor: Int,
-    @DrawableRes private val correctIcon: Int,
-    @DrawableRes private val inCorrectIcon: Int
-) :
+class AnswersAdapter :
     ListAdapter<AnsweredQuestion, AnswersAdapter.AnswerViewHolder>(ItemCallback) {
 
-    class AnswerViewHolder(val binding: AnswerItemBinding) :
+    class AnswerViewHolder(val binding: AnswerItemBinding, val context: Context) :
         RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = AnswerItemBinding.inflate(inflater)
-        return AnswerViewHolder(binding)
+        return AnswerViewHolder(binding, parent.context)
     }
 
     override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
@@ -33,20 +29,18 @@ class AnswersAdapter(
             val indexOfChosenAnswer = item.allAnswers.indexOf(item.chosenAnswer)
             val indexOfCorrectAnswer = item.allAnswers.indexOf(item.correctAnswer)
             if (item.isAnsweredCorrect()) {
-                itemAnswer.setCardBackgroundColor(correctColor)
-                setCorrectnessIcon(this, indexOfChosenAnswer, correctIcon)
+                setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_correct)
             } else {
-                setCorrectnessIcon(this, indexOfCorrectAnswer, correctIcon)
-                setCorrectnessIcon(this, indexOfChosenAnswer, inCorrectIcon)
-                itemAnswer.setCardBackgroundColor(inCorrectColor)
+                setCorrectnessIcon(this, indexOfCorrectAnswer, R.drawable.ic_correct)
+                setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_wrong)
             }
 
             textQuestion.text = item.questionText
 
-            textFirstAnswer.text = item.allAnswers[0]
-            textSecondAnswer.text = item.allAnswers[1]
-            textThirdAnswer.text = item.allAnswers[2]
-            textForthAnswer.text = item.allAnswers[3]
+            textFirstAnswer.text = holder.context.getString(R.string.first, item.allAnswers[0])
+            textSecondAnswer.text = holder.context.getString(R.string.second, item.allAnswers[1])
+            textThirdAnswer.text = holder.context.getString(R.string.third, item.allAnswers[2])
+            textForthAnswer.text = holder.context.getString(R.string.forth, item.allAnswers[3])
         }
     }
 
