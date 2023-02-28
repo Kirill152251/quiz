@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.quiz.presentation.view_models.QuestionScreenViewModel
 import com.quiz.presentation.view_models.QuizConfigurationViewModel
+import com.quiz.presentation.view_models.ResultScreenViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -30,6 +31,12 @@ interface ViewModelsModule {
     @ViewModelKey(QuestionScreenViewModel::class)
     @Singleton
     fun bindQuestionViewModel(viewModel: QuestionScreenViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ResultScreenViewModel::class)
+    @Singleton
+    fun bindResultViewModel(viewModel: ResultScreenViewModel): ViewModel
 }
 
 @Singleton

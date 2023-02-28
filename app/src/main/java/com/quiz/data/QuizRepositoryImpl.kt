@@ -49,6 +49,10 @@ class QuizRepositoryImpl @Inject constructor(
         return currentQuiz.questions.size
     }
 
+    override fun getAnsweredQuestions(): List<AnsweredQuestion> {
+        return answeredQuestionsList
+    }
+
     override fun setCurrentQuiz(quiz: Quiz) {
         currentQuiz = quiz
     }

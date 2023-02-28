@@ -1,9 +1,6 @@
 package com.quiz.domain
 
-import com.quiz.domain.models.Category
-import com.quiz.domain.models.Difficulty
-import com.quiz.domain.models.Question
-import com.quiz.domain.models.Quiz
+import com.quiz.domain.models.*
 import com.quiz.utils.ApiResult
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +12,7 @@ interface QuizRepository {
     fun setNextQuestion(chosenAnswer: String)
     fun setCurrentQuestion()
     fun getQuizSize(): Int
+    fun getAnsweredQuestions(): List<AnsweredQuestion>
 
     suspend fun fetchQuizFlow(
         difficulty: Difficulty,
