@@ -58,6 +58,7 @@ class ResultScreen : Fragment() {
                 viewModel.getNumberOfQuestions()
             )
             btnStartNewQuiz.setOnClickListener {
+                viewModel.clearAnsweredQuestionsCache()
                 findNavController().navigate(R.id.action_resultScreen_to_quizConfiguration)
             }
         }

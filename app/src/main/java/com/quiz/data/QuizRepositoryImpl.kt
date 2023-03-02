@@ -53,6 +53,11 @@ class QuizRepositoryImpl @Inject constructor(
         return answeredQuestionsList
     }
 
+    override fun clearAnsweredQuestionsList() {
+        answeredQuestionsList.clear()
+        numberOfCurrentQuestion.value = 1
+    }
+
     override fun setCurrentQuiz(quiz: Quiz) {
         currentQuiz = quiz
     }

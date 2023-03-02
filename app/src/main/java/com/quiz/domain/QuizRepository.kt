@@ -13,6 +13,7 @@ interface QuizRepository {
     fun setCurrentQuestion()
     fun getQuizSize(): Int
     fun getAnsweredQuestions(): List<AnsweredQuestion>
+    fun clearAnsweredQuestionsList()
 
     suspend fun fetchQuizFlow(
         difficulty: Difficulty,

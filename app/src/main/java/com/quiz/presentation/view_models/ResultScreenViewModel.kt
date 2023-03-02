@@ -22,4 +22,8 @@ class ResultScreenViewModel @Inject constructor(
         }
         return number.toString()
     }
+
+    fun clearAnsweredQuestionsCache() {
+        repository.clearAnsweredQuestionsList()
+    }
 }
