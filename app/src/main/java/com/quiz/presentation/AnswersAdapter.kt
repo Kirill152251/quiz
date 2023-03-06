@@ -6,42 +6,99 @@ import android.view.ViewGroup
 import androidx.annotation.DrawableRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.viewbinding.ViewBinding
 import com.quiz.R
 import com.quiz.databinding.AnswerItemBinding
+import com.quiz.databinding.ItemBtnBinding
 import com.quiz.domain.models.AnsweredQuestion
 
-class AnswersAdapter :
-    ListAdapter<AnsweredQuestion, AnswersAdapter.AnswerViewHolder>(ItemCallback) {
+class AnswersAdapter(private val onButtonClick: () -> Unit) :
+    ListAdapter<AnsweredQuestion, AnswersAdapter.ResultViewHolder>(ItemCallback) {
 
-    class AnswerViewHolder(val binding: AnswerItemBinding, val context: Context) :
-        RecyclerView.ViewHolder(binding.root)
+    sealed class ResultViewHolder(binding: ViewBinding) : ViewHolder(binding.root) {
+        class AnswerViewHolder(private val binding: AnswerItemBinding, val context: Context) :
+            ResultViewHolder(binding) {
+            fun bind(item: AnsweredQuestion) {
+                binding.apply {
+                    val indexOfChosenAnswer = item.allAnswers.indexOf(item.chosenAnswer)
+                    val indexOfCorrectAnswer = item.allAnswers.indexOf(item.correctAnswer)
+                    if (item.isAnsweredCorrect()) {
+                        setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_correct)
+                    } else {
+                        setCorrectnessIcon(this, indexOfCorrectAnswer, R.drawable.ic_correct)
+                        setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_wrong)
+                    }
+                    textQuestion.text = item.questionText
+                    textFirstAnswer.text = context.getString(R.string.first, item.allAnswers[0])
+                    textSecondAnswer.text = context.getString(R.string.second, item.allAnswers[1])
+                    textThirdAnswer.text = context.getString(R.string.third, item.allAnswers[2])
+                    textForthAnswer.text = context.getString(R.string.forth, item.allAnswers[3])
+                }
+            }
+        }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnswerViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = AnswerItemBinding.inflate(inflater)
-        return AnswerViewHolder(binding, parent.context)
+        class ButtonViewHolder(
+            private val binding: ItemBtnBinding,
+            private val onButtonClick: () -> Unit
+        ) : ResultViewHolder(binding) {
+            fun bind() {
+                binding.btnStartNewQuiz.setOnClickListener {
+                    onButtonClick()
+                }
+            }
+        }
+
+        fun setCorrectnessIcon(
+            binding: AnswerItemBinding,
+            index: Int,
+            @DrawableRes icon: Int
+        ) {
+            binding.apply {
+                when (index) {
+                    0 -> imageIndicator1.setBackgroundResource(icon)
+                    1 -> imageIndicator2.setBackgroundResource(icon)
+                    2 -> imageIndicator3.setBackgroundResource(icon)
+                    else -> imageIndicator4.setBackgroundResource(icon)
+                }
+            }
+        }
     }
 
-    override fun onBindViewHolder(holder: AnswerViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.binding.apply {
-            val indexOfChosenAnswer = item.allAnswers.indexOf(item.chosenAnswer)
-            val indexOfCorrectAnswer = item.allAnswers.indexOf(item.correctAnswer)
-            if (item.isAnsweredCorrect()) {
-                setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_correct)
-            } else {
-                setCorrectnessIcon(this, indexOfCorrectAnswer, R.drawable.ic_correct)
-                setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_wrong)
-            }
-
-            textQuestion.text = item.questionText
-
-            textFirstAnswer.text = holder.context.getString(R.string.first, item.allAnswers[0])
-            textSecondAnswer.text = holder.context.getString(R.string.second, item.allAnswers[1])
-            textThirdAnswer.text = holder.context.getString(R.string.third, item.allAnswers[2])
-            textForthAnswer.text = holder.context.getString(R.string.forth, item.allAnswers[3])
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return if (viewType == TYPE_ANSWER) {
+            val binding = AnswerItemBinding.inflate(inflater, parent, false)
+            ResultViewHolder.AnswerViewHolder(binding, parent.context)
+        } else {
+            val binding = ItemBtnBinding.inflate(inflater, parent, false)
+            ResultViewHolder.ButtonViewHolder(binding, onButtonClick)
         }
+    }
+
+    override fun onBindViewHolder(holder: ResultViewHolder, position: Int) {
+        when (holder) {
+            is ResultViewHolder.AnswerViewHolder -> holder.bind(getItem(position))
+            is ResultViewHolder.ButtonViewHolder -> holder.bind()
+        }
+    }
+
+    companion object {
+        private const val TYPE_ANSWER = 0
+        private const val TYPE_BUTTON = 1
+    }
+
+    override fun getItemCount(): Int {
+        return currentList.size + 1
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == currentList.size) {
+            TYPE_BUTTON
+        } else {
+            TYPE_ANSWER
+        }
+
     }
 
     object ItemCallback : DiffUtil.ItemCallback<AnsweredQuestion>() {
@@ -58,22 +115,6 @@ class AnswersAdapter :
             newItem: AnsweredQuestion
         ): Boolean {
             return oldItem.questionText == newItem.questionText
-        }
-
-    }
-
-    private fun setCorrectnessIcon(
-        binding: AnswerItemBinding,
-        index: Int,
-        @DrawableRes icon: Int
-    ) {
-        binding.apply {
-            when (index) {
-                0 -> imageIndicator1.setBackgroundResource(icon)
-                1 -> imageIndicator2.setBackgroundResource(icon)
-                2 -> imageIndicator3.setBackgroundResource(icon)
-                else -> imageIndicator4.setBackgroundResource(icon)
-            }
         }
     }
 }

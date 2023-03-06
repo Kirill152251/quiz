@@ -9,8 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentResultScreenBinding
@@ -26,7 +24,10 @@ class ResultScreen : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<ResultScreenViewModel> { viewModelFactory }
 
-    private val adapter = AnswersAdapter()
+    private val adapter = AnswersAdapter() {
+        viewModel.clearAnsweredQuestionsCache()
+        findNavController().navigate(R.id.action_resultScreen_to_quizConfiguration)
+    }
 
     override fun onAttach(context: Context) {
         context.appComponent.inject(this)
@@ -45,22 +46,11 @@ class ResultScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             rvAnswers.adapter = adapter
-            rvAnswers.layoutManager = LinearLayoutManager(requireContext())
-            rvAnswers.addItemDecoration(
-                DividerItemDecoration(
-                    requireContext(),
-                    LinearLayoutManager.VERTICAL
-                )
-            )
             textResult.text = getString(
                 R.string.quiz_result,
                 viewModel.getNumberOfCorrectAnswers(),
                 viewModel.getNumberOfQuestions()
             )
-            btnStartNewQuiz.setOnClickListener {
-                viewModel.clearAnsweredQuestionsCache()
-                findNavController().navigate(R.id.action_resultScreen_to_quizConfiguration)
-            }
         }
         adapter.submitList(viewModel.getAnsweredQuestions())
     }
