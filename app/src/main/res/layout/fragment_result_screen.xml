@@ -9,6 +9,8 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
         android:background="?attr/colorPrimary">
 
         <com.google.android.material.textview.MaterialTextView
@@ -18,6 +20,16 @@
             android:layout_height="wrap_content"
             android:text="@string/quiz_result"
             tools:text="Quiz Result: 18 out of 20" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_add_to_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:src="@drawable/ic_favorite_white"
+            android:background="?attr/colorPrimary"
+            android:padding="12dp"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
