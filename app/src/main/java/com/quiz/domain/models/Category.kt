@@ -11,8 +11,9 @@ enum class Category {
     SCIENCE,
     SOCIETY_AND_CULTURE,
     SPORT_AND_LEISURE;
-    fun convertToString(): String {
-        return when(this) {
+
+    fun convertToQueryString(): String {
+        return when (this) {
             ART_AND_LITERATURE -> "art_and_literature"
             FILM_AND_TV -> "film_and_tv"
             FOOD_AND_DRINKS -> "food_and_drinks"
@@ -23,6 +24,21 @@ enum class Category {
             SCIENCE -> "science"
             SOCIETY_AND_CULTURE -> "society_and_culture"
             SPORT_AND_LEISURE -> "sport_and_leisure"
+        }
+    }
+
+    fun convertToUIString(): String {
+        return when (this) {
+            ART_AND_LITERATURE -> "Art & Literature"
+            FILM_AND_TV -> "Films & TV"
+            FOOD_AND_DRINKS -> "Food & Drinks"
+            GENERAL_KNOWLEDGE -> "General Knowledge"
+            GEOGRAPHY -> "Geography"
+            HISTORY -> "History"
+            MUSIC -> "Music"
+            SCIENCE -> "Science"
+            SOCIETY_AND_CULTURE -> "Society"
+            SPORT_AND_LEISURE -> "Sport"
         }
     }
 }

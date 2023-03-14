@@ -22,14 +22,14 @@ class RemoteDataSourceImpl @Inject constructor(
     ): Flow<ApiResult<Quiz>> {
 
         val categoriesQueryString = categories.joinToString(",") {
-            it.convertToString()
+            it.convertToQueryString()
         }
 
         return flow {
             try {
                 emit(ApiResult.Loading)
                 val questions = service.getQuiz(
-                    difficulty = difficulty.convertToString(),
+                    difficulty = difficulty.convertToQueryString(),
                     categories = categoriesQueryString,
                     limit = number
                 ).map { it.toDomain() }
