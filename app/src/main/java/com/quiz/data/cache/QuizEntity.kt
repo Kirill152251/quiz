@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 import com.quiz.domain.models.Question
 import com.quiz.domain.models.SavedQuiz
 import com.quiz.utils.QUIZ_DATABASE
-import com.quiz.utils.toCategoryEnum
-import com.quiz.utils.toDifficultyEnum
+import com.quiz.utils.toEnumCategory
+import com.quiz.utils.toEnumDifficulty
 
 @Entity(tableName = QUIZ_DATABASE)
 data class QuizEntity(
@@ -24,9 +24,9 @@ data class QuizEntity(
             numberOfQuestions = this.numberOfQuestions,
             questions = this.questions,
             categories = this.category.map {
-                it.toCategoryEnum()
+                it.toEnumCategory()
             },
-            difficulty = this.difficulty.toDifficultyEnum()
+            difficulty = this.difficulty.toEnumDifficulty()
         )
     }
 }

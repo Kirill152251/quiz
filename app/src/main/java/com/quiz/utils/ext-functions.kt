@@ -3,7 +3,7 @@ package com.quiz.utils
 import com.quiz.domain.models.Category
 import com.quiz.domain.models.Difficulty
 
-fun String.toCategoryEnum(): Category {
+fun String.toEnumCategory(): Category {
     return when (this) {
         "Art & Literature" -> Category.ART_AND_LITERATURE
         "Films & TV" -> Category.FILM_AND_TV
@@ -18,7 +18,7 @@ fun String.toCategoryEnum(): Category {
     }
 }
 
-fun String.toDifficultyEnum(): Difficulty {
+fun String.toEnumDifficulty(): Difficulty {
     return when (this) {
         "HARD" -> Difficulty.HARD
         "MEDIUM" -> Difficulty.MEDIUM
