@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface QuizDao {
 
-    @Insert
-    suspend fun insert(quiz: QuizEntity): Int
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insert(quiz: QuizEntity): Long
 
     @Delete
     suspend fun delete(quiz: QuizEntity)
