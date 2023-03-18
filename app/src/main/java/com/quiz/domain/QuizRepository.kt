@@ -14,6 +14,10 @@ interface QuizRepository {
     fun getQuizSize(): Int
     fun getAnsweredQuestions(): List<AnsweredQuestion>
     fun clearAnsweredQuestionsList()
+    suspend fun deleteQuizFromDb(quiz: SavedQuiz)
+    suspend fun deleteJustSavedQuizFromDb()
+    fun getSavedQuizFromDb(): Flow<List<SavedQuiz>>
+    suspend fun saveQuizToDb(saveTime: String): Long
 
     suspend fun fetchQuizFlow(
         difficulty: Difficulty,

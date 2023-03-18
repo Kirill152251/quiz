@@ -51,6 +51,13 @@ class ResultScreen : Fragment() {
                 viewModel.getNumberOfCorrectAnswers(),
                 viewModel.getNumberOfQuestions()
             )
+            btnAddToFav.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    viewModel.savedQuizToDb()
+                } else {
+                    viewModel.deleteJustSavedQuizFromDb()
+                }
+            }
         }
         adapter.submitList(viewModel.getAnsweredQuestions())
     }

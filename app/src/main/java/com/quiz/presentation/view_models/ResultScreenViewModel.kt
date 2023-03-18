@@ -1,8 +1,13 @@
 package com.quiz.presentation.view_models
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.models.AnsweredQuestion
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class ResultScreenViewModel @Inject constructor(
@@ -25,5 +30,19 @@ class ResultScreenViewModel @Inject constructor(
 
     fun clearAnsweredQuestionsCache() {
         repository.clearAnsweredQuestionsList()
+    }
+
+    fun savedQuizToDb() {
+        val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
+        val saveTime = LocalDateTime.now().format(formatter)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveQuizToDb(saveTime)
+        }
+    }
+
+    fun deleteJustSavedQuizFromDb() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteJustSavedQuizFromDb()
+        }
     }
 }

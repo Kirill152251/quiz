@@ -1,5 +1,6 @@
 package com.quiz.data
 
+import com.quiz.domain.CacheDataSource
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.RemoteDataSource
 import com.quiz.domain.models.*
@@ -11,10 +12,12 @@ import javax.inject.Singleton
 
 @Singleton
 class QuizRepositoryImpl @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val cacheDataSource: CacheDataSource
 ) : QuizRepository {
 
     private lateinit var currentQuiz: Quiz
+    private var lastSavedQuiz: SavedQuiz? = null
     private val numberOfCurrentQuestion = MutableStateFlow(1)
     private val currentQuestion =
         MutableStateFlow(Question.emptyQuestion)
@@ -56,6 +59,25 @@ class QuizRepositoryImpl @Inject constructor(
     override fun clearAnsweredQuestionsList() {
         answeredQuestionsList.clear()
         numberOfCurrentQuestion.value = 1
+    }
+
+    override suspend fun deleteQuizFromDb(quiz: SavedQuiz) {
+        cacheDataSource.deleteQuiz(quiz)
+    }
+
+    override suspend fun deleteJustSavedQuizFromDb() {
+        lastSavedQuiz?.let {
+            cacheDataSource.deleteQuiz(it)
+        }
+    }
+
+    override fun getSavedQuizFromDb(): Flow<List<SavedQuiz>> {
+        return cacheDataSource.getQuizList()
+    }
+
+    override suspend fun saveQuizToDb(saveTime: String): Long {
+        lastSavedQuiz = currentQuiz.toSavedQuiz(saveTime)
+        return cacheDataSource.saveQuiz(lastSavedQuiz!!)
     }
 
     override fun setCurrentQuiz(quiz: Quiz) {
