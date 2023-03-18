@@ -127,4 +127,21 @@ class QuizDatabaseTest {
             cancel()
         }
     }
+
+    @Test fun mappers_test() = runTest {
+        val savedQuiz = entity.toDomain()
+        val convertedEntity = savedQuiz.toEntity()
+        dao.insert(convertedEntity)
+        dao.getData().test {
+            val list = awaitItem()
+            assert(list.contains(convertedEntity))
+            assert(list.first().toDomain() == savedQuiz)
+            cancel()
+        }
+        dao.delete(convertedEntity)
+        dao.getData().test {
+            val list = awaitItem()
+            assert(list.isEmpty())
+        }
+    }
 }
