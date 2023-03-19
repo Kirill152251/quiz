@@ -37,4 +37,6 @@
     <string name="difficulty">Difficulty: %1$s</string>
     <string name="number_of_questions">Number of questions: %1$s</string>
     <string name="category">Category: %1$s</string>
+    <string name="liked_quiz">Liked Quiz</string>
+    <string name="empty_quiz_list">List is empty</string>
 </resources>

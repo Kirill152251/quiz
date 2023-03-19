@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.quiz.R
 import com.quiz.databinding.FragmentFavoriteQuizzesScreenBinding
 
-class FavoriteQuizzesScreen : Fragment() {
+class LikedQuizFragment : Fragment() {
 
     private var _binding: FragmentFavoriteQuizzesScreenBinding? = null
     private val binding get() = _binding!!

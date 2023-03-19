@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/favoriteQuizzesScreen"
-        android:name="com.quiz.presentation.FavoriteQuizzesScreen"
+        android:name="com.quiz.presentation.LikedQuizFragment"
         android:label="FavoriteQuizzesScreen" >
         <action
             android:id="@+id/action_favoriteQuizzesScreen_to_navigation"
