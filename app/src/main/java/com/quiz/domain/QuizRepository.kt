@@ -18,6 +18,7 @@ interface QuizRepository {
     suspend fun deleteJustSavedQuizFromDb()
     fun getSavedQuizFromDb(): Flow<List<SavedQuiz>>
     suspend fun saveQuizToDb(saveTime: String): Long
+    fun btnLikeIsCheckedFlow(): Flow<Boolean>
 
     suspend fun fetchQuizFlow(
         difficulty: Difficulty,

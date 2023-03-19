@@ -7,12 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentResultScreenBinding
 import com.quiz.presentation.view_models.ResultScreenViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ResultScreen : Fragment() {
@@ -60,6 +64,13 @@ class ResultScreen : Fragment() {
             }
         }
         adapter.submitList(viewModel.getAnsweredQuestions())
+        lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.likeBtnState.collect {
+                    binding.btnAddToFav.isChecked = it
+                }
+            }
+        }
     }
 
     override fun onDestroy() {
