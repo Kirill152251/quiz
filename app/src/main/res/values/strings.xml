@@ -33,4 +33,8 @@
     <string name="third">3. %1$s</string>
     <string name="forth">4. %1$s</string>
     <string name="quiz_result">Quiz Result: %1$s out of %2$s</string>
+    <string name="save_date">Save date: %1$s</string>
+    <string name="difficulty">Difficulty: %1$s</string>
+    <string name="number_of_questions">Number of questions: %1$s</string>
+    <string name="category">Category: %1$s</string>
 </resources>
