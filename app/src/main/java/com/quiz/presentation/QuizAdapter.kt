@@ -1,4 +1,4 @@
-package com.quiz.presentation.view_models
+package com.quiz.presentation
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -33,7 +33,9 @@ class QuizAdapter(private val onDelete: (quiz: SavedQuiz) -> Unit) :
                     item.numberOfQuestions.toString()
                 )
             textCategory.text =
-                holder.context.getString(R.string.category, item.categories.joinToString(", "))
+                holder.context.getString(R.string.category, item.categories.joinToString(", ") {
+                    it.convertToUIString()
+                })
             btnDelete.setOnClickListener {
                 onDelete(item)
             }

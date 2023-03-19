@@ -2,6 +2,7 @@ package com.quiz.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.quiz.presentation.view_models.LikedQuizScreenViewModel
 import com.quiz.presentation.view_models.QuestionScreenViewModel
 import com.quiz.presentation.view_models.QuizConfigurationViewModel
 import com.quiz.presentation.view_models.ResultScreenViewModel
@@ -37,6 +38,12 @@ interface ViewModelsModule {
     @ViewModelKey(ResultScreenViewModel::class)
     @Singleton
     fun bindResultViewModel(viewModel: ResultScreenViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(LikedQuizScreenViewModel::class)
+    @Singleton
+    fun bindLikedQuizViewModel(viewModel: LikedQuizScreenViewModel): ViewModel
 }
 
 @Singleton
