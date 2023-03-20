@@ -23,4 +23,8 @@ class QuizConfigurationViewModel @Inject constructor(
     fun cacheCurrentQuiz(quiz: Quiz) {
         repository.setCurrentQuiz(quiz)
     }
+
+    fun currentQuiz(): Quiz {
+        return repository.getCurrentQuiz()
+    }
 }

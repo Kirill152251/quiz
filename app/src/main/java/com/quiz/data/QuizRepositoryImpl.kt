@@ -16,9 +16,7 @@ class QuizRepositoryImpl @Inject constructor(
     private val cacheDataSource: CacheDataSource
 ) : QuizRepository {
 
-    private lateinit var currentQuiz: Quiz
-    private var lastSavedQuiz: SavedQuiz? = null
-    private val btnLikeIsChecked = MutableStateFlow(false)
+    private  var currentQuiz = Quiz.emptyQuiz
     private val numberOfCurrentQuestion = MutableStateFlow(1)
     private val currentQuestion =
         MutableStateFlow(Question.emptyQuestion)
@@ -57,41 +55,29 @@ class QuizRepositoryImpl @Inject constructor(
         return answeredQuestionsList
     }
 
-    override fun clearAnsweredQuestionsList() {
-        answeredQuestionsList.clear()
-        numberOfCurrentQuestion.value = 1
-    }
-
     override suspend fun deleteQuizFromDb(quiz: SavedQuiz) {
         cacheDataSource.deleteQuiz(quiz)
-        if (lastSavedQuiz == quiz) {
-            btnLikeIsChecked.value = false
-        }
     }
 
-    override suspend fun deleteJustSavedQuizFromDb() {
-        lastSavedQuiz?.let {
-            cacheDataSource.deleteQuiz(it)
-        }
-        btnLikeIsChecked.value = false
+    override fun getSavedQuizFlowFromDb(): Flow<List<SavedQuiz>> {
+        return cacheDataSource.getQuizFlow()
     }
 
-    override fun getSavedQuizFromDb(): Flow<List<SavedQuiz>> {
+    override suspend fun getSavedQuizListFromDb(): List<SavedQuiz> {
         return cacheDataSource.getQuizList()
     }
 
     override suspend fun saveQuizToDb(saveTime: String): Long {
-        lastSavedQuiz = currentQuiz.toSavedQuiz(saveTime)
-        btnLikeIsChecked.value = true
-        return cacheDataSource.saveQuiz(lastSavedQuiz!!)
-    }
-
-    override fun btnLikeIsCheckedFlow(): Flow<Boolean> {
-        return btnLikeIsChecked
+        return cacheDataSource.saveQuiz(currentQuiz.toSavedQuiz(saveTime))
     }
 
     override fun setCurrentQuiz(quiz: Quiz) {
+        answeredQuestionsList.clear()
+        numberOfCurrentQuestion.value = 1
         currentQuiz = quiz
+    }
+    override fun getCurrentQuiz(): Quiz {
+        return currentQuiz
     }
 
     override suspend fun fetchQuizFlow(

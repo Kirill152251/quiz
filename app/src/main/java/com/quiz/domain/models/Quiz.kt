@@ -15,4 +15,8 @@ data class Quiz(
             categories = this.categories
         )
     }
+
+    companion object {
+        val emptyQuiz = Quiz(listOf(), 0, Difficulty.HARD, listOf())
+    }
 }

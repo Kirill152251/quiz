@@ -14,11 +14,17 @@ class CacheDataSourceImpl @Inject constructor(
         return dao.insert(quiz.toEntity())
     }
 
-    override fun getQuizList(): Flow<List<SavedQuiz>> {
-        return dao.getData().map { list ->
+    override fun getQuizFlow(): Flow<List<SavedQuiz>> {
+        return dao.getDataFlow().map { list ->
             list.map { quizEntity ->
                 quizEntity.toDomain()
             }
+        }
+    }
+
+    override suspend fun getQuizList(): List<SavedQuiz> {
+        return dao.getDataList().map {
+            it.toDomain()
         }
     }
 

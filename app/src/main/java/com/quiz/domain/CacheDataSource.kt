@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.Flow
 interface CacheDataSource {
 
     suspend fun saveQuiz(quiz: SavedQuiz): Long
-    fun getQuizList(): Flow<List<SavedQuiz>>
+    fun getQuizFlow(): Flow<List<SavedQuiz>>
+    suspend fun getQuizList(): List<SavedQuiz>
     suspend fun deleteQuiz(quiz: SavedQuiz)
 }

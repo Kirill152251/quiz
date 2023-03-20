@@ -23,7 +23,7 @@ class LikedQuizScreenViewModel @Inject constructor(
     init {
         handleEvent()
         viewModelScope.launch {
-            repository.getSavedQuizFromDb().collect { quizList ->
+            repository.getSavedQuizFlowFromDb().collect { quizList ->
                 if (quizList.isNotEmpty()) {
                     _state.update { LikedQuizScreenState.LikedQuizList(quizList) }
                 } else {
@@ -41,6 +41,9 @@ class LikedQuizScreenViewModel @Inject constructor(
                         withContext(Dispatchers.IO) {
                             repository.deleteQuizFromDb(event.quiz)
                         }
+                    }
+                    is LikedQuizScreenEvent.SetupChosenQuiz -> {
+                        repository.setCurrentQuiz(event.quiz.toDomain())
                     }
                 }
             }
@@ -61,4 +64,5 @@ sealed class LikedQuizScreenState {
 
 sealed class LikedQuizScreenEvent {
     data class DeleteItem(val quiz: SavedQuiz) : LikedQuizScreenEvent()
+    data class SetupChosenQuiz(val quiz: SavedQuiz) : LikedQuizScreenEvent()
 }

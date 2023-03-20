@@ -39,4 +39,5 @@
     <string name="category">Category: %1$s</string>
     <string name="liked_quiz">Liked Quiz</string>
     <string name="empty_quiz_list">List is empty</string>
+    <string name="successful_save">Quiz is saved</string>
 </resources>

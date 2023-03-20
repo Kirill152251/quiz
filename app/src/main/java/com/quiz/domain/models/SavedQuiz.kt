@@ -26,4 +26,13 @@ data class SavedQuiz(
             }
         )
     }
+
+    fun toDomain(): Quiz {
+        return Quiz(
+            questions = this.questions,
+            categories = this.categories,
+            numberOfQuestions = this.numberOfQuestions,
+            difficulty = this.difficulty
+        )
+    }
 }

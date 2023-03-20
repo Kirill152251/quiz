@@ -13,5 +13,8 @@ interface QuizDao {
     suspend fun delete(quiz: QuizEntity)
 
     @Query("SELECT * FROM QUIZ_DB")
-    fun getData(): Flow<List<QuizEntity>>
+    fun getDataFlow(): Flow<List<QuizEntity>>
+
+    @Query("SELECT * FROM QUIZ_DB")
+    suspend fun getDataList(): List<QuizEntity>
 }

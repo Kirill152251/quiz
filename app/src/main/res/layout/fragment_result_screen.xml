@@ -21,15 +21,13 @@
             android:text="@string/quiz_result"
             tools:text="Quiz Result: 18 out of 20" />
 
-        <com.google.android.material.checkbox.MaterialCheckBox
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/btn_add_to_fav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_white"
             android:buttonTint="@color/button_fav_tint"
             android:layout_gravity="end"
-            android:button="@drawable/ic_favorite_white"
-            android:clickable="true"
-            android:focusable="true"
             android:padding="12dp"/>
 
     </androidx.appcompat.widget.Toolbar>
