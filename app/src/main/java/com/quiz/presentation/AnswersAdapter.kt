@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -23,6 +24,10 @@ class AnswersAdapter(private val onButtonClick: () -> Unit) :
                 binding.apply {
                     val indexOfChosenAnswer = item.allAnswers.indexOf(item.chosenAnswer)
                     val indexOfCorrectAnswer = item.allAnswers.indexOf(item.correctAnswer)
+                    imageIndicator1.isVisible = false
+                    imageIndicator2.isVisible = false
+                    imageIndicator3.isVisible = false
+                    imageIndicator4.isVisible = false
                     if (item.isAnsweredCorrect()) {
                         setCorrectnessIcon(this, indexOfChosenAnswer, R.drawable.ic_correct)
                     } else {
@@ -56,10 +61,22 @@ class AnswersAdapter(private val onButtonClick: () -> Unit) :
         ) {
             binding.apply {
                 when (index) {
-                    0 -> imageIndicator1.setBackgroundResource(icon)
-                    1 -> imageIndicator2.setBackgroundResource(icon)
-                    2 -> imageIndicator3.setBackgroundResource(icon)
-                    else -> imageIndicator4.setBackgroundResource(icon)
+                    0 -> {
+                        imageIndicator1.setBackgroundResource(icon)
+                        imageIndicator1.isVisible = true
+                    }
+                    1 -> {
+                        imageIndicator2.setBackgroundResource(icon)
+                        imageIndicator2.isVisible = true
+                    }
+                    2 -> {
+                        imageIndicator3.setBackgroundResource(icon)
+                        imageIndicator3.isVisible = true
+                    }
+                    else -> {
+                        imageIndicator4.setBackgroundResource(icon)
+                        imageIndicator4.isVisible = true
+                    }
                 }
             }
         }
