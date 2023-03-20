@@ -69,7 +69,7 @@ class QuizDatabaseTest {
     @Test
     fun add_item_should_return_this_item_inFlow() = runTest {
         dao.insert(entity)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val data = awaitItem()
             assert(data.contains(entity))
             assert(data[0].category.first() == "category")
@@ -82,7 +82,7 @@ class QuizDatabaseTest {
         dao.insert(entity)
         dao.insert(entity1)
         dao.insert(entity2)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(list.size == 3)
             assert(list[0].id == "1")
@@ -96,7 +96,7 @@ class QuizDatabaseTest {
     fun add_two_same_entities_should_save_only_one() = runTest {
         dao.insert(entity)
         val id = dao.insert(entity)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(id == -1L)
             assert(list.size == 1)
@@ -108,7 +108,7 @@ class QuizDatabaseTest {
     fun add_item_and_delete_item_list_should_be_empty() = runTest {
         dao.insert(entity)
         dao.delete(entity)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(list.isEmpty())
             cancel()
@@ -121,7 +121,7 @@ class QuizDatabaseTest {
         dao.insert(entity1)
         dao.insert(entity2)
         dao.delete(entity2)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(!list.contains(entity2))
             cancel()
@@ -132,14 +132,14 @@ class QuizDatabaseTest {
         val savedQuiz = entity.toDomain()
         val convertedEntity = savedQuiz.toEntity()
         dao.insert(convertedEntity)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(list.contains(convertedEntity))
             assert(list.first().toDomain() == savedQuiz)
             cancel()
         }
         dao.delete(convertedEntity)
-        dao.getData().test {
+        dao.getDataFlow().test {
             val list = awaitItem()
             assert(list.isEmpty())
         }

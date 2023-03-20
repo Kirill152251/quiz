@@ -5,18 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentResultScreenBinding
 import com.quiz.presentation.view_models.ResultScreenViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class ResultScreen : Fragment() {
@@ -29,7 +26,7 @@ class ResultScreen : Fragment() {
     private val viewModel by viewModels<ResultScreenViewModel> { viewModelFactory }
 
     private val adapter = AnswersAdapter() {
-        viewModel.clearAnsweredQuestionsCache()
+        viewModel.resetQuiz()
         findNavController().navigate(R.id.action_resultScreen_to_quizConfiguration)
     }
 
@@ -55,22 +52,16 @@ class ResultScreen : Fragment() {
                 viewModel.getNumberOfCorrectAnswers(),
                 viewModel.getNumberOfQuestions()
             )
-            btnAddToFav.setOnCheckedChangeListener { _, isChecked ->
-                if (isChecked) {
-                    viewModel.savedQuizToDb()
-                } else {
-                    viewModel.deleteJustSavedQuizFromDb()
-                }
+            btnAddToFav.setOnClickListener {
+                viewModel.savedQuizToDb()
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.successful_save),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
         adapter.submitList(viewModel.getAnsweredQuestions())
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.likeBtnState.collect {
-                    binding.btnAddToFav.isChecked = it
-                }
-            }
-        }
     }
 
     override fun onDestroy() {

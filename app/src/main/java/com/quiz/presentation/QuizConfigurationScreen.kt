@@ -21,6 +21,7 @@ import com.quiz.domain.models.Category
 import com.quiz.domain.models.Category.*
 import com.quiz.domain.models.Difficulty
 import com.quiz.domain.models.Difficulty.*
+import com.quiz.domain.models.Quiz
 import com.quiz.presentation.view_models.QuizConfigurationViewModel
 import com.quiz.utils.ApiResult
 import kotlinx.coroutines.launch
@@ -50,6 +51,9 @@ class QuizConfigurationScreen : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (viewModel.currentQuiz() != Quiz.emptyQuiz) {
+            findNavController().navigate(R.id.action_quizConfiguration_to_questionScreen)
+        }
         binding.btnStartQuiz.setOnClickListener {
             fetchQuiz()
         }

@@ -12,10 +12,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentFavoriteQuizzesScreenBinding
+import com.quiz.domain.models.SavedQuiz
 import com.quiz.presentation.view_models.LikedQuizScreenEvent
 import com.quiz.presentation.view_models.LikedQuizScreenState
 import com.quiz.presentation.view_models.LikedQuizScreenViewModel
@@ -31,9 +34,17 @@ class LikedQuizFragment : Fragment() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<LikedQuizScreenViewModel> { viewModelFactory }
 
-    private val adapter = QuizAdapter() {
-        viewModel.setEvent(LikedQuizScreenEvent.DeleteItem(it))
-    }
+    private val adapter = QuizAdapter(object : QuizAdapter.Listener {
+        override fun deleteItem(item: SavedQuiz) {
+            viewModel.setEvent(LikedQuizScreenEvent.DeleteItem(item))
+        }
+
+        override fun clickItem(item: SavedQuiz) {
+            viewModel.setEvent(LikedQuizScreenEvent.SetupChosenQuiz(item))
+            findNavController()
+                .navigate(R.id.action_favoriteQuizzesScreen_to_quiz_nav)
+        }
+    })
 
     override fun onAttach(context: Context) {
         context.appComponent.inject(this)
@@ -60,7 +71,7 @@ class LikedQuizFragment : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.state.collect { state ->
-                    when(state) {
+                    when (state) {
                         LikedQuizScreenState.EmptyList -> {
                             binding.apply {
                                 rvQuiz.isVisible = false

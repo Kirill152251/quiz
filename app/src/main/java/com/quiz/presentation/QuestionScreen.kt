@@ -40,6 +40,7 @@ class QuestionScreen : Fragment() {
         _binding = FragmentQuestionScreenBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.setCurrentQuestion()
@@ -60,6 +61,7 @@ class QuestionScreen : Fragment() {
             }
         }
     }
+
     private fun bindQuestion() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -75,6 +77,7 @@ class QuestionScreen : Fragment() {
             }
         }
     }
+
     private fun bindQuestionNumber() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

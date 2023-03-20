@@ -5,16 +5,17 @@
     android:id="@+id/nav"
     app:startDestination="@id/quiz_nav">
 
-
     <fragment
         android:id="@+id/favoriteQuizzesScreen"
         android:name="com.quiz.presentation.LikedQuizFragment"
-        android:label="FavoriteQuizzesScreen" >
+        android:label="FavoriteQuizzesScreen">
         <action
-            android:id="@+id/action_favoriteQuizzesScreen_to_navigation"
+            android:id="@+id/action_favoriteQuizzesScreen_to_quiz_nav"
             app:destination="@id/quiz_nav" />
     </fragment>
-    <navigation android:id="@+id/quiz_nav"
+
+    <navigation
+        android:id="@+id/quiz_nav"
         app:startDestination="@id/quizConfiguration">
         <fragment
             android:id="@+id/quizConfiguration"
@@ -32,13 +33,14 @@
             tools:layout="@layout/fragment_question_screen">
             <action
                 android:id="@+id/action_questionScreen_to_resultScreen"
-                app:destination="@id/resultScreen" />
+                app:destination="@id/resultScreen"
+                app:popUpToInclusive="true" />
         </fragment>
         <fragment
             android:id="@+id/resultScreen"
             android:name="com.quiz.presentation.ResultScreen"
             android:label="fragment_result_screen"
-            tools:layout="@layout/fragment_result_screen" >
+            tools:layout="@layout/fragment_result_screen">
             <action
                 android:id="@+id/action_resultScreen_to_quizConfiguration"
                 app:destination="@id/quizConfiguration" />
