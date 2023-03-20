@@ -27,43 +27,46 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_first_answer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:paddingHorizontal="16dp"
             android:text="@string/first"
             android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/image_indicator1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_question"
             tools:text="1. First answer" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_second_answer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingHorizontal="16dp"
             android:text="@string/second"
             android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/image_indicator2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_first_answer"
             tools:text="2. Second answer" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_third_answer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:paddingHorizontal="16dp"
             android:text="@string/third"
             android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/image_indicator3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_second_answer"
             tools:text="3. Third answer" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_forth_answer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
@@ -71,6 +74,7 @@
             android:text="@string/forth"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_indicator4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_third_answer"
             tools:text="4. Forth answer" />
@@ -79,8 +83,10 @@
             android:id="@+id/image_indicator1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintStart_toEndOf="@id/text_first_answer"
             app:layout_constraintBottom_toBottomOf="@+id/text_first_answer"
-            app:layout_constraintStart_toEndOf="@+id/text_first_answer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_first_answer"
             tools:src="@drawable/ic_wrong" />
 
@@ -88,8 +94,10 @@
             android:id="@+id/image_indicator2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintStart_toEndOf="@id/text_second_answer"
             app:layout_constraintBottom_toBottomOf="@+id/text_second_answer"
-            app:layout_constraintStart_toEndOf="@+id/text_second_answer"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/text_second_answer"
             tools:src="@drawable/ic_correct" />
 
@@ -97,17 +105,23 @@
             android:id="@+id/image_indicator3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintStart_toEndOf="@id/text_third_answer"
             app:layout_constraintBottom_toBottomOf="@+id/text_third_answer"
-            app:layout_constraintStart_toEndOf="@+id/text_third_answer"
-            app:layout_constraintTop_toTopOf="@+id/text_third_answer" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_third_answer"
+            tools:src="@drawable/ic_correct"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/image_indicator4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            app:layout_constraintStart_toEndOf="@id/text_forth_answer"
             app:layout_constraintBottom_toBottomOf="@+id/text_forth_answer"
-            app:layout_constraintStart_toEndOf="@+id/text_forth_answer"
-            app:layout_constraintTop_toTopOf="@+id/text_forth_answer" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_forth_answer"
+            tools:src="@drawable/ic_correct" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
