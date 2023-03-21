@@ -15,7 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentQuestionScreenBinding
-import com.quiz.presentation.view_models.QuestionScreenViewModel
+import com.quiz.presentation.viewmodel.QuestionScreenViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

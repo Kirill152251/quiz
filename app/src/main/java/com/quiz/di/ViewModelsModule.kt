@@ -2,10 +2,10 @@ package com.quiz.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.quiz.presentation.view_models.LikedQuizScreenViewModel
-import com.quiz.presentation.view_models.QuestionScreenViewModel
-import com.quiz.presentation.view_models.QuizConfigurationViewModel
-import com.quiz.presentation.view_models.ResultScreenViewModel
+import com.quiz.presentation.viewmodel.LikedQuizScreenViewModel
+import com.quiz.presentation.viewmodel.QuestionScreenViewModel
+import com.quiz.presentation.viewmodel.QuizConfigurationViewModel
+import com.quiz.presentation.viewmodel.ResultScreenViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

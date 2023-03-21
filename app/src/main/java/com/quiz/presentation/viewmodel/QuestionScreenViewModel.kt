@@ -1,4 +1,4 @@
-package com.quiz.presentation.view_models
+package com.quiz.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.quiz.domain.QuizRepository

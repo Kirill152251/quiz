@@ -19,9 +19,9 @@ import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentFavoriteQuizzesScreenBinding
 import com.quiz.domain.models.SavedQuiz
-import com.quiz.presentation.view_models.LikedQuizScreenEvent
-import com.quiz.presentation.view_models.LikedQuizScreenState
-import com.quiz.presentation.view_models.LikedQuizScreenViewModel
+import com.quiz.presentation.viewmodel.LikedQuizScreenEvent
+import com.quiz.presentation.viewmodel.LikedQuizScreenState
+import com.quiz.presentation.viewmodel.LikedQuizScreenViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -13,7 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.quiz.R
 import com.quiz.appComponent
 import com.quiz.databinding.FragmentResultScreenBinding
-import com.quiz.presentation.view_models.ResultScreenViewModel
+import com.quiz.presentation.viewmodel.ResultScreenViewModel
 import javax.inject.Inject
 
 class ResultScreen : Fragment() {

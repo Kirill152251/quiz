@@ -22,7 +22,7 @@ import com.quiz.domain.models.Category.*
 import com.quiz.domain.models.Difficulty
 import com.quiz.domain.models.Difficulty.*
 import com.quiz.domain.models.Quiz
-import com.quiz.presentation.view_models.QuizConfigurationViewModel
+import com.quiz.presentation.viewmodel.QuizConfigurationViewModel
 import com.quiz.utils.ApiResult
 import kotlinx.coroutines.launch
 import javax.inject.Inject
