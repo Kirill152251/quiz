@@ -18,10 +18,4 @@ interface QuizRepository {
     fun getSavedQuizFlowFromDb(): Flow<List<SavedQuiz>>
     suspend fun getSavedQuizListFromDb(): List<SavedQuiz>
     suspend fun saveQuizToDb(saveTime: String): Long
-
-    suspend fun fetchQuizFlow(
-        difficulty: Difficulty,
-        number: Int,
-        categories: List<Category>
-    ): Flow<ApiResult<Quiz>>
 }
