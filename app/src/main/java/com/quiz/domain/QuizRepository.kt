@@ -1,7 +1,8 @@
 package com.quiz.domain
 
-import com.quiz.domain.models.*
-import com.quiz.utils.ApiResult
+import com.quiz.domain.models.AnsweredQuestion
+import com.quiz.domain.models.Question
+import com.quiz.domain.models.Quiz
 import kotlinx.coroutines.flow.Flow
 
 interface QuizRepository {
@@ -14,8 +15,4 @@ interface QuizRepository {
     fun setCurrentQuestion()
     fun getQuizSize(): Int
     fun getAnsweredQuestions(): List<AnsweredQuestion>
-    suspend fun deleteQuizFromDb(quiz: SavedQuiz)
-    fun getSavedQuizFlowFromDb(): Flow<List<SavedQuiz>>
-    suspend fun getSavedQuizListFromDb(): List<SavedQuiz>
-    suspend fun saveQuizToDb(saveTime: String): Long
 }

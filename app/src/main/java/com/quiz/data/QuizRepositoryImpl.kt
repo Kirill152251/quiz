@@ -1,22 +1,18 @@
 package com.quiz.data
 
-import com.quiz.domain.CacheDataSource
 import com.quiz.domain.QuizRepository
-import com.quiz.domain.RemoteDataSource
-import com.quiz.domain.models.*
-import com.quiz.utils.ApiResult
+import com.quiz.domain.models.AnsweredQuestion
+import com.quiz.domain.models.Question
+import com.quiz.domain.models.Quiz
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class QuizRepositoryImpl @Inject constructor(
-    private val remoteDataSource: RemoteDataSource,
-    private val cacheDataSource: CacheDataSource
-) : QuizRepository {
+class QuizRepositoryImpl @Inject constructor() : QuizRepository {
 
-    private  var currentQuiz = Quiz.emptyQuiz
+    private var currentQuiz = Quiz.emptyQuiz
     private val numberOfCurrentQuestion = MutableStateFlow(1)
     private val currentQuestion =
         MutableStateFlow(Question.emptyQuestion)
@@ -55,36 +51,13 @@ class QuizRepositoryImpl @Inject constructor(
         return answeredQuestionsList
     }
 
-    override suspend fun deleteQuizFromDb(quiz: SavedQuiz) {
-        cacheDataSource.deleteQuiz(quiz)
-    }
-
-    override fun getSavedQuizFlowFromDb(): Flow<List<SavedQuiz>> {
-        return cacheDataSource.getQuizFlow()
-    }
-
-    override suspend fun getSavedQuizListFromDb(): List<SavedQuiz> {
-        return cacheDataSource.getQuizList()
-    }
-
-    override suspend fun saveQuizToDb(saveTime: String): Long {
-        return cacheDataSource.saveQuiz(currentQuiz.toSavedQuiz(saveTime))
-    }
-
     override fun setCurrentQuiz(quiz: Quiz) {
         answeredQuestionsList.clear()
         numberOfCurrentQuestion.value = 1
         currentQuiz = quiz
     }
+
     override fun getCurrentQuiz(): Quiz {
         return currentQuiz
-    }
-
-    override suspend fun fetchQuizFlow(
-        difficulty: Difficulty,
-        number: Int,
-        categories: List<Category>
-    ): Flow<ApiResult<Quiz>> {
-        return remoteDataSource.getQuiz(difficulty, number, categories)
     }
 }
