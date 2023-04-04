@@ -6,6 +6,7 @@ import com.quiz.data.remote.RemoteDataSourceImpl
 import com.quiz.domain.CacheDataSource
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.RemoteDataSource
+import com.quiz.domain.RemoteRepository
 import dagger.Binds
 import dagger.Module
 
@@ -20,4 +21,7 @@ interface BindModule {
 
     @Binds
     fun bindCacheDataSource(impl: CacheDataSourceImpl): CacheDataSource
+
+    @Binds
+    fun bindRemoteRepository(impl: QuizRepositoryImpl): RemoteRepository
 }
