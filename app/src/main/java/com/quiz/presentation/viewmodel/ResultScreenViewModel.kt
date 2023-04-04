@@ -2,6 +2,7 @@ package com.quiz.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.quiz.domain.CacheRepository
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.models.AnsweredQuestion
 import com.quiz.domain.models.Quiz
@@ -12,16 +13,17 @@ import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class ResultScreenViewModel @Inject constructor(
-    private val repository: QuizRepository
+    private val quizRepository: QuizRepository,
+    private val cacheRepository: CacheRepository
 ) : ViewModel() {
 
     fun getAnsweredQuestions(): List<AnsweredQuestion> =
-        repository.getAnsweredQuestions()
+        quizRepository.getAnsweredQuestions()
 
-    fun getNumberOfQuestions(): String = repository.getQuizSize().toString()
+    fun getNumberOfQuestions(): String = quizRepository.getQuizSize().toString()
 
     fun getNumberOfCorrectAnswers(): String {
-        val list = repository.getAnsweredQuestions()
+        val list = quizRepository.getAnsweredQuestions()
         var number = 0
         list.forEach {
             if (it.isAnsweredCorrect()) number++
@@ -33,11 +35,11 @@ class ResultScreenViewModel @Inject constructor(
         val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")
         val saveTime = LocalDateTime.now().format(formatter)
         viewModelScope.launch(Dispatchers.IO) {
-            repository.saveQuizToDb(saveTime)
+            cacheRepository.saveQuiz(saveTime)
         }
     }
 
     fun resetQuiz() {
-        repository.setCurrentQuiz(Quiz.emptyQuiz)
+        quizRepository.setCurrentQuiz(Quiz.emptyQuiz)
     }
 }

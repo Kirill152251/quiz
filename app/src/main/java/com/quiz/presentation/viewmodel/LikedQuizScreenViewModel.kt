@@ -2,6 +2,7 @@ package com.quiz.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.quiz.domain.CacheRepository
 import com.quiz.domain.QuizRepository
 import com.quiz.domain.models.SavedQuiz
 import kotlinx.coroutines.Dispatchers
@@ -11,7 +12,8 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class LikedQuizScreenViewModel @Inject constructor(
-    private val repository: QuizRepository
+    private val cacheRepository: CacheRepository,
+    private val quizRepository: QuizRepository
 ) : ViewModel() {
     private val _state: MutableStateFlow<LikedQuizScreenState> =
         MutableStateFlow(LikedQuizScreenState.Idle)
@@ -23,7 +25,7 @@ class LikedQuizScreenViewModel @Inject constructor(
     init {
         handleEvent()
         viewModelScope.launch {
-            repository.getSavedQuizFlowFromDb().collect { quizList ->
+            cacheRepository.getSavedQuizFlow().collect { quizList ->
                 if (quizList.isNotEmpty()) {
                     _state.update { LikedQuizScreenState.LikedQuizList(quizList) }
                 } else {
@@ -39,11 +41,11 @@ class LikedQuizScreenViewModel @Inject constructor(
                 when (event) {
                     is LikedQuizScreenEvent.DeleteItem -> {
                         withContext(Dispatchers.IO) {
-                            repository.deleteQuizFromDb(event.quiz)
+                            cacheRepository.deleteQuiz(event.quiz)
                         }
                     }
                     is LikedQuizScreenEvent.SetupChosenQuiz -> {
-                        repository.setCurrentQuiz(event.quiz.toDomain())
+                        quizRepository.setCurrentQuiz(event.quiz.toDomain())
                     }
                 }
             }
